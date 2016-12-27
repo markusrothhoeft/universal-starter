@@ -36,6 +36,7 @@ export const UNIVERSAL_KEY = 'UNIVERSAL_CACHE';
   bootstrap: [ AppComponent ],
   imports: [
     // MaterialModule.forRoot() should be included first
+    // Das UniversalModule soll als erstes importiert werden.
     UniversalModule, // BrowserModule, HttpModule, and JsonpModule are included
 
     FormsModule,

@@ -31,6 +31,7 @@ const app = express();
 const ROOT = path.join(path.resolve(__dirname, '..'));
 
 // Express View
+// Für das Server rendern wird das MainModule von ./node.module geladen. 
 app.engine('.html', createEngine({
   ngModule: MainModule,
   providers: [

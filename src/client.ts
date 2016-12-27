@@ -8,7 +8,7 @@ import { enableProdMode } from '@angular/core';
 import { platformUniversalDynamic } from 'angular2-universal/browser';
 import { bootloader } from '@angularclass/bootloader';
 
-import { load as loadWebFont } from 'webfontloader';
+//import { load as loadWebFont } from 'webfontloader';
 
 // enable prod for faster renders
 // enableProdMode();
@@ -21,14 +21,22 @@ export const platformRef = platformUniversalDynamic();
 export function main() {
   // Load fonts async
   // https://github.com/typekit/webfontloader#configuration
-  loadWebFont({
-    google: {
-      families: ['Droid Sans']
-    }
-  });
+  // loadWebFont({
+  //   google: {
+  //     families: ['Droid Sans']
+  //   }
+  // });
 
   return platformRef.bootstrapModule(MainModule);
 }
 
 // support async tag or hmr
+// Die bootloader Funktion prüft vor dem Bootstrapping von Angular 2
+// ob der DOM bereit ist. 
+// Die Main Funktion lädt das MainModule wird von ./src/browser.module.ts.
+// Zum bootstrapping wird platformUniversalDynamic verwendet.
+// Bei einer std-App verwenden wir platformBrowserDynamic. 
+// Das MainModule ist dann AppModule und wird aus ./src/app.module geladen
+
+// Bootstrap
 bootloader(main);
